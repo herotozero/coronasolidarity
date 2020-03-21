@@ -33,9 +33,5 @@
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoiaGVyYmVydHRvdCIsImEiOiJjazgxc3U4bjIwaXpkM25tczEyc2JxYXNjIn0.NkeHkNFThuchdMw4dElBrw'
     }).addTo(mymap);
-
-    <%# @cities.each do |helper| %>
-<!--      getLonLatFromCity('').then(data => L.marker([parseFloat(data['latt']), parseFloat(data['longt'])]).addTo(mymap));-->
-    <%# end %>
 </script>
 <%= javascript_tag "setMarkers(#{@cities.to_json.html_safe});" %>
