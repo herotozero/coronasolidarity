@@ -1,5 +1,5 @@
-<%= simple_form_for @helper do |f| %>
-    <%= f.input :qualification, label: 'Welche Qualifikation / Erfahrung hast Du?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
+<%= simple_form_for @helper, defaults: { error: 'Bitte angeben!' } do |f| %>
+    <%= f.input :qualification, label: 'Welche Qualifikation / Erfahrung hast Du?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
         'Pflegehilfskraft/-assistenz',
         'Exam. Gesundheits-/ und Krankenpfleger/in', 
         'Arzt/Ärztin',
@@ -7,22 +7,22 @@
         'Medizinstudent/-in','Sonstiges']
     %>
 
-    <%= f.input :specialty, label: 'In welcher Fachabteilung möchtest Du gerne helfen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
+    <%= f.input :specialty, label: 'In welcher Fachabteilung möchtest Du gerne helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
         'Egal, wo ich gebraucht werde',
         'Intensivstation',
         'Notaufnahme',
         'Eine andere Fachabteilung']
     %>
 
-    <%= f.input :city, label: 'In welcher Stadt kannst Du arbeiten?', error: 'Bitte angeben!'%>
+    <%= f.input :city, label: 'In welcher Stadt kannst Du arbeiten?' %>
 
-    <%= f.input :commitment, label: 'Mit wie viel Zeiteinsatz die Woche kannst Du helfen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
+    <%= f.input :commitment, label: 'Mit wie viel Zeiteinsatz die Woche kannst Du helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
         '5-6 Dienste',
         '3-4 Dienste',
         '1-2 Dienste']
     %>
 
-    <%= f.input :availability, label: 'Für welchen Zeitraum kannst Du ein Krankenhaus unterstützen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
+    <%= f.input :availability, label: 'Für welchen Zeitraum kannst Du ein Krankenhaus unterstützen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
         'Dauerhaft',
         'Zeitlich begrenzt, für ein paar Wochen',
         'Zeitlich begrenzt, für einige Monate']
@@ -30,7 +30,7 @@
 
     <%= f.input :start_date, value: "", label: 'Wann kannst du starten?', hint: 'Falls du sofort starten kannst, lass dieses Feld einfach aus.'%>
 
-    <%= f.input :employment_status, label: 'Was ist Dein aktueller Beschäftigungsstatus?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
+    <%= f.input :employment_status, label: 'Was ist Dein aktueller Beschäftigungsstatus?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
         'Im Krankenhaus angestellt',
         'In einem pflegerischen / medizinischen Beruf außerhalb des Krankenhauses angestellt',
         'Aktuell nicht in einem Bechäftigungsverhältnis',
@@ -40,10 +40,10 @@
 
     <hr />
 
-    <%= f.input :first_name, label: "Vorname", error: 'Bitte angeben!' %>
-    <%= f.input :last_name, label: "Nachname", error: 'Bitte angeben!' %>
-    <%= f.input :email, as: :email, label: "Email", error: 'Bitte angeben!' %>
-    <%= f.input :phone, as: :tel, label: "Telefon", error: 'Bitte angeben!' %>
+    <%= f.input :first_name, label: "Vorname" %>
+    <%= f.input :last_name, label: "Nachname" %>
+    <%= f.input :email, as: :email, label: "Email" %>
+    <%= f.input :phone, as: :tel, label: "Telefon" %>
 
     <%= f.button :submit, "Absenden", class: "btn-primary" %>
   <% end %>

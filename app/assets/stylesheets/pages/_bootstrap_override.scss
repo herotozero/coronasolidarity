@@ -2,3 +2,35 @@
 .col-form-label, .form-group > label {
     font-weight: bold;
 }
+
+.radio-cards {
+    .form-check {
+        display: inline-block;
+        vertical-align: middle;
+        padding-left: 0;
+        padding-right: 8px;
+
+        .radio-card {
+            width: 120px;
+            height: 120px;
+            background-color: $white;
+            border-radius: 10px;
+            border: 2px solid $gray-400;
+            font-size: 14px;
+            padding: 10px;
+            transition : border 50ms ease-out;
+
+            &:hover { 
+                border-color: $gray-500; cursor: pointer;
+            }
+        }
+
+        .form-check-input {
+            display: none;
+        }
+    
+        .form-check-input:checked + label .radio-card {
+            border-color: $blue;
+        }
+    }
+}
