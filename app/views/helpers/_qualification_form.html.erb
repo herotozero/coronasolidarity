@@ -1,0 +1,38 @@
+<%= f.input :qualification, label: 'Welche Qualifikation / Erfahrung hast Du?', as: :radio_buttons, error: 'Bitte angeben!', item_label_class: 'my-custom-class', collection: [
+    'Pflegehilfskraft/-assistenz',
+    'Exam. Gesundheits-/ und Krankenpfleger/in', 
+    'Arzt/Ärztin',
+    'Gesundheits-/ und Krankenpfleger/in in der Ausbildung',
+    'Medizinstudent/-in','Sonstiges']
+%>
+
+<%= f.input :specialty, label: 'In welcher Fachabteilung möchtest Du gerne helfen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
+    'Egal, wo ich gebraucht werde',
+    'Intensivstation',
+    'Notaufnahme',
+    'Eine andere Fachabteilung']
+%>
+
+<%= f.input :city, label: 'In welcher Stadt kannst Du arbeiten?', error: 'Bitte angeben!'%>
+
+<%= f.input :commitment, label: 'Mit wie viel Zeiteinsatz die Woche kannst Du helfen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
+    '5-6 Dienste',
+    '3-4 Dienste',
+    '1-2 Dienste']
+%>
+
+<%= f.input :availability, label: 'Für welchen Zeitraum kannst Du ein Krankenhaus unterstützen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
+    'Dauerhaft',
+    'Zeitlich begrenzt, für ein paar Wochen',
+    'Zeitlich begrenzt, für einige Monate']
+%>
+
+<%= f.input :start_date, value: "", label: 'Wann kannst du starten?', hint: 'Falls du sofort starten kannst, lass dieses Feld einfach aus.'%>
+
+<%= f.input :employment_status, label: 'Was ist Dein aktueller Beschäftigungsstatus?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
+    'Im Krankenhaus angestellt',
+    'In einem pflegerischen / medizinischen Beruf außerhalb des Krankenhauses angestellt',
+    'Aktuell nicht in einem Bechäftigungsverhältnis',
+    'Außerhalb der Gesundheitsbranche angestellt',
+    'Sonstiges']
+%>

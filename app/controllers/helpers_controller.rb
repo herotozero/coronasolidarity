@@ -5,6 +5,17 @@ class HelpersController < ApplicationController
 
   def create
     @helper = Helper.new(helpers_params)
+    # @helper.current_step = session[:helper_step]
+
+    # Code für server seitige multi step form
+    # if params[:back_button]
+    #   @helper.previous_step
+    # else
+    #   @helper.next_step
+    # end
+
+    # session[:helper_step] = @helper.current_step
+    # render "new"
 
     if @helper.save
       redirect_to helper_path
