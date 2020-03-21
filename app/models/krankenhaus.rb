@@ -1,2 +1,0 @@
-class Krankenhaus < ApplicationRecord
-end
