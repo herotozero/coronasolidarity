@@ -1,0 +1,44 @@
+<h1>Übersicht über alle Helfer</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Vorname</th>
+    <th>Nachname</th>
+    <th>E-Mail</th>
+    <th>Telefonnummer</th>
+    <th>Qualifikationen</th>
+    <th>Wunsch - Fachabteilung</th>
+    <th>Stadt</th>
+    <th>Anzahl Dienste pro Woche</th>
+    <th>Ab wann</th>
+    <th>Aktuelle Anstellungen</th>
+<!--    <th></th>-->
+<!--    <th></th>-->
+    <th></th>
+
+  </tr>
+
+  <% @helpers.each do |helper| %>
+    <tr>
+      <td><%= helper.name %></td>
+      <td><%= helper.first_name %></td>
+      <td><%= helper.last_name %></td>
+      <td><%= helper.email %></td>
+      <td><%= helper.phone %></td>
+      <td><%= helper.qualification %></td>
+      <td><%= helper.specialty %></td>
+      <td><%= helper.city %></td>
+      <td><%= helper.commitment %></td>
+      <td><%= helper.start_date %></td>
+      <td><%= helper.employment_status %></td>
+<!--      <td><%#= link_to 'Show', helper %></td>-->
+<!--      <td><%#= link_to 'Edit', edit_helper_path(helper) %></td>-->
+      <td><%= link_to 'Destroy', helper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neuen Helfer anlegen', new_helper_path %>
