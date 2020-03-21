@@ -7,7 +7,7 @@ class HelpersController < ApplicationController
     @helper = Helper.new(helpers_params)
 
     if @helper.save
-      redirect_to @helper
+      redirect_to helper_path
     else
       render 'new'
     end
