@@ -4,7 +4,7 @@ class KrankenhausController < ApplicationController
   # GET /krankenhaus
   # GET /krankenhaus.json
   def index
-    @krankenhaus = Krankenhau.all
+    @krankenhaus = Krankenhaus.all
   end
 
   # GET /krankenhaus/1
@@ -14,7 +14,7 @@ class KrankenhausController < ApplicationController
 
   # GET /krankenhaus/new
   def new
-    @krankenhau = Krankenhau.new
+    @krankenhau = Krankenhaus.new
   end
 
   # GET /krankenhaus/1/edit
@@ -24,11 +24,11 @@ class KrankenhausController < ApplicationController
   # POST /krankenhaus
   # POST /krankenhaus.json
   def create
-    @krankenhau = Krankenhau.new(krankenhau_params)
+    @krankenhau = Krankenhaus.new(krankenhau_params)
 
     respond_to do |format|
       if @krankenhau.save
-        format.html { redirect_to @krankenhau, notice: 'Krankenhau was successfully created.' }
+        format.html { redirect_to @krankenhau, notice: 'Krankenhaus was successfully created.' }
         format.json { render :show, status: :created, location: @krankenhau }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class KrankenhausController < ApplicationController
   def update
     respond_to do |format|
       if @krankenhau.update(krankenhau_params)
-        format.html { redirect_to @krankenhau, notice: 'Krankenhau was successfully updated.' }
+        format.html { redirect_to @krankenhau, notice: 'Krankenhaus was successfully updated.' }
         format.json { render :show, status: :ok, location: @krankenhau }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class KrankenhausController < ApplicationController
   def destroy
     @krankenhau.destroy
     respond_to do |format|
-      format.html { redirect_to krankenhaus_url, notice: 'Krankenhau was successfully destroyed.' }
+      format.html { redirect_to krankenhaus_index_url, notice: 'Krankenhaus was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,7 +64,7 @@ class KrankenhausController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_krankenhau
-      @krankenhau = Krankenhau.find(params[:id])
+      @krankenhau = Krankenhaus.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

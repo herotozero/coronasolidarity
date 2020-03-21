@@ -1,2 +1,0 @@
-class Krankenhau < ApplicationRecord
-end
