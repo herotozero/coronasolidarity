@@ -1,0 +1,13 @@
+{
+    "name": "coronasolidarity",
+    "stack": "heroku-18",
+    "buildpacks": [
+      {
+        "url": "heroku/nodejs"
+      },
+      {
+        "url": "heroku/ruby"
+      }
+    ]
+  }
+  
