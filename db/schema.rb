@@ -15,11 +15,6 @@ ActiveRecord::Schema.define(version: 2020_03_21_130442) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "helfers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "helpers", force: :cascade do |t|
     t.string "title"
     t.string "first_name"
@@ -32,11 +27,6 @@ ActiveRecord::Schema.define(version: 2020_03_21_130442) do
     t.string "commitment"
     t.date "start_date"
     t.string "employment_status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "krankenhaus", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
