@@ -35,6 +35,14 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # Benutzung von mailcatcher um in delevelopment Email zu testen. Port liegt deswegen abweichend auf Port 1025.
+  # Anwendung läuft auf localhost:1080. Muss extra installiert werden, da Abhängigkeiten sich beißen und so eine uralte Version installiert würde
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

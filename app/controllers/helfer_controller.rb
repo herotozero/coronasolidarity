@@ -1,0 +1,2 @@
+class HelferController < ApplicationController
+end
