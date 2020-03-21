@@ -24,5 +24,4 @@ test:
 production:
   <<: *default
   database: coronasolidarity_production
-  username: coronasolidarity
-  password: <%= ENV['CORONASOLIDARITY_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
