@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hospital_type: MyString
+  city: MyString
+  qualification: MyString
+  ward: MyString
+  specialty: MyString
+  start_date: 2020-03-21
+  commitment: MyString
+  helper_amount: 1
+  personal_note: MyText
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  phone: MyString
+  title: MyString
+  availability: MyString
+
+two:
+  hospital_type: MyString
+  city: MyString
+  qualification: MyString
+  ward: MyString
+  specialty: MyString
+  start_date: 2020-03-21
+  commitment: MyString
+  helper_amount: 1
+  personal_note: MyText
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  phone: MyString
+  title: MyString
+  availability: MyString
