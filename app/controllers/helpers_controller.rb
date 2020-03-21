@@ -1,11 +1,16 @@
 class HelpersController < ApplicationController
   def new
+    @helper = Helper.new
   end
 
   def create
-    @helper = Helper.new(params)
-    @helper.save
-    redirect_to root_path
+    @helper = Helper.new(helpers_params)
+
+    if @helper.save
+      redirect_to @helper
+    else
+      render 'new'
+    end
   end
 
   def index
@@ -13,7 +18,10 @@ class HelpersController < ApplicationController
   end
 
   def destroy
+    @article = Helper.find(params[:id])
+    @article.destroy
 
+    redirect_to helper_path
   end
 
   private
