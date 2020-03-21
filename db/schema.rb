@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 2020_03_21_164031) do
     t.string "specialty"
     t.string "city"
     t.string "commitment"
+    t.string "shift"
     t.date "start_date"
     t.string "employment_status"
+    t.text "personal_note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "availability"
@@ -36,10 +38,8 @@ ActiveRecord::Schema.define(version: 2020_03_21_164031) do
     t.string "hospital_type"
     t.string "city"
     t.string "qualification"
-    t.string "ward"
     t.string "specialty"
     t.date "start_date"
-    t.string "commitment"
     t.integer "helper_amount"
     t.text "personal_note"
     t.string "first_name"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_03_21_164031) do
     t.string "phone"
     t.string "title"
     t.string "availability"
+    t.string "shift"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

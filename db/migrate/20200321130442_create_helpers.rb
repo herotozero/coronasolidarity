@@ -10,8 +10,10 @@ class CreateHelpers < ActiveRecord::Migration[5.2]
       t.string :specialty
       t.string :city
       t.string :commitment
+      t.string :shift
       t.date :start_date
       t.string :employment_status
+      t.text :personal_note
 
       t.timestamps
     end

@@ -1,17 +1,17 @@
 <%= simple_form_for @helper, defaults: { error: 'Bitte angeben!' } do |f| %>
     <%= f.input :qualification, label: 'Welche Qualifikation / Erfahrung hast Du?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
         'Pflegehilfskraft/-assistenz',
-        'Exam. Gesundheits-/ und Krankenpfleger/in', 
+        'Exam. Gesundheits-/ und Krankenpfleger/in',
         'Arzt/Ärztin',
         'Gesundheits-/ und Krankenpfleger/in in der Ausbildung',
         'Medizinstudent/-in','Sonstiges']
     %>
 
-    <%= f.input :specialty, label: 'In welcher Fachabteilung möchtest Du gerne helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
-        'Egal, wo ich gebraucht werde',
+    <%= f.input :specialty, label: 'In welchem Bereich möchtest Du gerne helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
+        'Normalstation',
         'Intensivstation',
         'Notaufnahme',
-        'Eine andere Fachabteilung']
+        'Egal, wo ich gebraucht werde']
     %>
 
     <%= f.input :city, label: 'In welcher Stadt kannst Du arbeiten?' %>
@@ -22,8 +22,15 @@
         '1-2 Dienste']
     %>
 
-    <%= f.input :availability, label: 'Für welchen Zeitraum kannst Du ein Krankenhaus unterstützen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
-        'Dauerhaft',
+    <%= f.input :shift, label: 'Zu welchen Dienstzeiten kannst Du helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
+        'Frühdienst',
+        'Spätdienst',
+        'Nachtdienst',
+        'Egal']
+    %>
+
+    <%= f.input :availability, label: 'Für welchen Zeitraum kannst Du helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
+        'Zunächst unbegrenzt',
         'Zeitlich begrenzt, für ein paar Wochen',
         'Zeitlich begrenzt, für einige Monate']
     %>
@@ -45,5 +52,9 @@
     <%= f.input :email, as: :email, label: "Email" %>
     <%= f.input :phone, as: :tel, label: "Telefon" %>
 
+    <%= f.input :personal_note, label: "Zusätzliche Informationen", placeholder: "Sollten wir sonst noch etwas wissen?", error: 'Bitte angeben!' %>
+
     <%= f.button :submit, "Absenden", class: "btn-primary" %>
   <% end %>
+
+<script>$('.form-group.radio-cards label').wrapInner("<div class='radio-card'></div>")</script>
