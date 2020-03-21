@@ -15,11 +15,14 @@ ActiveRecord::Schema.define(version: 2020_03_21_130442) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "helfers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+=======
+>>>>>>> 917c7800c93e31ba6e22f2a633e824d2b29f5437
   create_table "helpers", force: :cascade do |t|
     t.string "title"
     t.string "first_name"
@@ -36,11 +39,14 @@ ActiveRecord::Schema.define(version: 2020_03_21_130442) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
   create_table "krankenhaus", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+=======
+>>>>>>> 917c7800c93e31ba6e22f2a633e824d2b29f5437
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
