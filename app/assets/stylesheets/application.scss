@@ -8,7 +8,9 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "leaflet";
-
+@import "leaflet_awesome_number_markers";
+@import "leaflet.markercluster/dist/MarkerCluster";
+@import "leaflet.markercluster/dist/MarkerCluster.Default";
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
