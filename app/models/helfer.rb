@@ -1,2 +1,0 @@
-class Helfer < ApplicationRecord
-end
