@@ -5,9 +5,10 @@ class HelpersController < ApplicationController
 
   def create
     @helper = Helper.new(helpers_params)
-
+    @helper.title = '-'
+    print @helper.inspect
     if @helper.save
-      redirect_to helper_path
+      redirect_to root_path
     else
       render 'new'
     end
