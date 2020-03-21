@@ -1,17 +1,17 @@
 <%= simple_form_for @helper do |f| %>
     <%= f.input :qualification, label: 'Welche Qualifikation / Erfahrung hast Du?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
         'Pflegehilfskraft/-assistenz',
-        'Exam. Gesundheits-/ und Krankenpfleger/in', 
+        'Exam. Gesundheits-/ und Krankenpfleger/in',
         'Arzt/Ärztin',
         'Gesundheits-/ und Krankenpfleger/in in der Ausbildung',
         'Medizinstudent/-in','Sonstiges']
     %>
 
-    <%= f.input :specialty, label: 'In welcher Fachabteilung möchtest Du gerne helfen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
-        'Egal, wo ich gebraucht werde',
+    <%= f.input :specialty, label: 'In welchem Bereich möchtest Du gerne helfen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
+        'Normalstation',
         'Intensivstation',
         'Notaufnahme',
-        'Eine andere Fachabteilung']
+        'Egal, wo ich gebraucht werde']
     %>
 
     <%= f.input :city, label: 'In welcher Stadt kannst Du arbeiten?', error: 'Bitte angeben!'%>
@@ -22,8 +22,15 @@
         '1-2 Dienste']
     %>
 
-    <%= f.input :availability, label: 'Für welchen Zeitraum kannst Du ein Krankenhaus unterstützen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
-        'Dauerhaft',
+    <%= f.input :shift, label: 'Zu welchen Dienstzeiten kannst du helfen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
+        'Frühdienst',
+        'Spätdienst',
+        'Nachtdienst',
+        'Egal']
+    %>
+
+    <%= f.input :availability, label: 'Für welchen Zeitraum kannst Du helfen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
+        'Zunächst unbegrenzt',
         'Zeitlich begrenzt, für ein paar Wochen',
         'Zeitlich begrenzt, für einige Monate']
     %>
@@ -44,6 +51,8 @@
     <%= f.input :last_name, label: "Nachname", error: 'Bitte angeben!' %>
     <%= f.input :email, as: :email, label: "Email", error: 'Bitte angeben!' %>
     <%= f.input :phone, as: :tel, label: "Telefon", error: 'Bitte angeben!' %>
+
+    <%= f.input :personal_note, label: "Zusätzliche Informationen", placeholder: "Sollten wir sonst noch etwas wissen?", error: 'Bitte angeben!' %>
 
     <%= f.button :submit, "Absenden", class: "btn-primary" %>
   <% end %>

@@ -4,10 +4,8 @@ class CreateHospitals < ActiveRecord::Migration[5.2]
       t.string :hospital_type
       t.string :city
       t.string :qualification
-      t.string :ward
       t.string :specialty
       t.date :start_date
-      t.string :commitment
       t.integer :helper_amount
       t.text :personal_note
       t.string :first_name
@@ -16,6 +14,7 @@ class CreateHospitals < ActiveRecord::Migration[5.2]
       t.string :phone
       t.string :title
       t.string :availability
+      t.string :shift
 
       t.timestamps
     end
