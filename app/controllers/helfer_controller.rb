@@ -1,2 +1,0 @@
-class HelferController < ApplicationController
-end

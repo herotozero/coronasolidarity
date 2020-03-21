@@ -6,7 +6,7 @@ class KrankenhausControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get krankenhaus_url
+    get krankenhaus_index_url
     assert_response :success
   end
 
@@ -16,11 +16,11 @@ class KrankenhausControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create krankenhau" do
-    assert_difference('Krankenhau.count') do
-      post krankenhaus_url, params: { krankenhau: {  } }
+    assert_difference('Krankenhaus.count') do
+      post krankenhaus_index_url, params: { krankenhau: {  } }
     end
 
-    assert_redirected_to krankenhau_url(Krankenhau.last)
+    assert_redirected_to krankenhau_url(Krankenhaus.last)
   end
 
   test "should show krankenhau" do
@@ -39,10 +39,10 @@ class KrankenhausControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy krankenhau" do
-    assert_difference('Krankenhau.count', -1) do
+    assert_difference('Krankenhaus.count', -1) do
       delete krankenhau_url(@krankenhau)
     end
 
-    assert_redirected_to krankenhaus_url
+    assert_redirected_to krankenhaus_index_url
   end
 end
