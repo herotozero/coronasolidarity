@@ -25,4 +25,4 @@ production:
   <<: *default
   database: coronasolidarity_production
   username: coronasolidarity
-  password:
+  password: <%= ENV['CORONASOLIDARITY_DATABASE_PASSWORD'] %>
