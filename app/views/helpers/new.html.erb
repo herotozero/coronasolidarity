@@ -1,58 +1,101 @@
-<%= simple_form_for @helper do |f| %>
-    <%= f.input :qualification, label: 'Welche Qualifikation / Erfahrung hast Du?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
-        'Pflegehilfskraft/-assistenz',
-        'Exam. Gesundheits-/ und Krankenpfleger/in',
-        'Arzt/Ärztin',
-        'Gesundheits-/ und Krankenpfleger/in in der Ausbildung',
-        'Medizinstudent/-in','Sonstiges']
+<%= simple_form_for @helper, defaults: { error: 'Bitte angeben!' } do |f| %>
+    <%= f.input :qualification, label: 'Welche Qualifikation / Erfahrung hast Du?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
+        ['Pflegehilfskraft/-assistenz', 'PFLEGEHILFSKRAFT'],
+        ['Exam. Gesundheits-/ und Krankenpfleger/in', 'PFLEGER'],
+        ['Arzt/Ärztin', 'ARZT'],
+        ['Gesundheits-/ und Krankenpfleger/in in der Ausbildung', 'PFLEGER_AUSBILDUNG'],
+        ['Medizinstudent/-in', 'STUDENT'],
+        ['Sonstiges', 'SONSTIGES']]
     %>
 
-    <%= f.input :specialty, label: 'In welchem Bereich möchtest Du gerne helfen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
-        'Normalstation',
-        'Intensivstation',
-        'Notaufnahme',
-        'Egal, wo ich gebraucht werde']
+    <%= f.input :specialty, label: 'In welchem Bereich möchtest Du gerne helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
+        ['Normalstation', 'NORMALSTATION'],
+        ['Intensivstation', 'INTENSIVSTATION'],
+        ['Notaufnahme', 'NOTAUFNAHME'],
+        ['Egal, wo ich gebraucht werde', 'EGAL']]
     %>
 
-    <%= f.input :city, label: 'In welcher Stadt kannst Du arbeiten?', error: 'Bitte angeben!'%>
+    <%= f.input :city, label: 'In welcher Stadt kannst Du arbeiten?' %>
 
-    <%= f.input :commitment, label: 'Mit wie viel Zeiteinsatz die Woche kannst Du helfen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
-        '5-6 Dienste',
-        '3-4 Dienste',
-        '1-2 Dienste']
+    <%= f.input :commitment, label: 'Mit wie viel Zeiteinsatz die Woche kannst Du helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
+        ['5-6 Dienste', '5-6'],
+        ['3-4 Dienste', '3-4'],
+        ['1-2 Dienste', '1-2']]
     %>
 
-    <%= f.input :shift, label: 'Zu welchen Dienstzeiten kannst Du helfen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
-        'Frühdienst',
-        'Spätdienst',
-        'Nachtdienst',
-        'Egal']
+    <%= f.input :shift, label: 'Zu welchen Dienstzeiten kannst Du helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
+        ['Frühdienst', 'FRÜH'],
+        ['Spätdienst', 'SPÄT'],
+        ['Nachtdienst', 'NACHT'],
+        ['Egal', 'EGAL']]
     %>
 
-    <%= f.input :availability, label: 'Für welchen Zeitraum kannst Du helfen?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
-        'Zunächst unbegrenzt',
-        'Zeitlich begrenzt, für ein paar Wochen',
-        'Zeitlich begrenzt, für einige Monate']
+    <%= f.input :availability, label: 'Für welchen Zeitraum kannst Du helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
+        ['Zunächst unbegrenzt', 'UNBEGRENZT'],
+        ['Zeitlich begrenzt, für ein paar Wochen', 'PAAR_WOCHEN'],
+        ['Zeitlich begrenzt, für einige Monate', 'EINIGE_MONATE']]
     %>
 
-    <%= f.input :start_date, value: "", label: 'Wann kannst du starten?', hint: 'Falls du sofort starten kannst, lass dieses Feld einfach aus.'%>
+    <%= f.input :start_date, value: "", label: 'Wann kannst du starten?' %>
 
-    <%= f.input :employment_status, label: 'Was ist Dein aktueller Beschäftigungsstatus?', as: :radio_buttons, error: 'Bitte angeben!', collection: [
-        'Im Krankenhaus angestellt',
-        'In einem pflegerischen / medizinischen Beruf außerhalb des Krankenhauses angestellt',
-        'Aktuell nicht in einem Bechäftigungsverhältnis',
-        'Außerhalb der Gesundheitsbranche angestellt',
-        'Sonstiges']
+    <%= f.input :employment_status, label: 'Was ist Dein aktueller Beschäftigungsstatus?', as: :radio_buttons, wrapper_html: { class: 'radio-cards' }, collection: [
+        ['Im Krankenhaus angestellt', 'KRANKENHAUS'],
+        ['In einem pflegerischen / medizinischen Beruf außerhalb des Krankenhauses angestellt', 'PFLEGER'],
+        ['Aktuell nicht in einem Bechäftigungsverhältnis', 'NICHT_BESCHÄFTIGT'],
+        ['Außerhalb der Gesundheitsbranche angestellt', 'AUßERHALB'],
+        ['Sonstiges', 'SONSTIGES']]
     %>
 
     <hr />
 
-    <%= f.input :first_name, label: "Vorname", error: 'Bitte angeben!' %>
-    <%= f.input :last_name, label: "Nachname", error: 'Bitte angeben!' %>
-    <%= f.input :email, as: :email, label: "Email", error: 'Bitte angeben!' %>
-    <%= f.input :phone, as: :tel, label: "Telefon", error: 'Bitte angeben!' %>
+    <%= f.input :first_name, label: "Vorname" %>
+    <%= f.input :last_name, label: "Nachname" %>
+    <%= f.input :email, as: :email, label: "Email" %>
+    <%= f.input :phone, as: :tel, label: "Telefon" %>
 
     <%= f.input :personal_note, label: "Zusätzliche Informationen", placeholder: "Sollten wir sonst noch etwas wissen?", error: 'Bitte angeben!' %>
 
     <%= f.button :submit, "Absenden", class: "btn-primary" %>
   <% end %>
+
+<script>
+    $('.form-group.radio-cards label:not(:has(>div.radio-card))').wrapInner("<div class='radio-card'></div>");
+
+    // Icons
+    const materialIcons = {
+        SONSTIGES: "add",
+        NORMALSTATION: "add_circle_outline",
+        INTENSIVSTATION: "hotel",
+        NOTAUFNAHME: "add_location",
+        EGAL: "check_circle_outline",
+        '5-6': "filter_5",
+        '3-4': "filter_3",
+        '1-2': 'filter_1',
+        KRANKENHAUS: "apartment",
+        PFLEGER: "home_work"
+    };
+
+    const fontawesomeIcons = {
+        PFLEGEHILFSKRAFT: "user-plus",
+        ARZT: "user-md",
+        PFLEGER_AUSBILDUNG: "user-edit",
+        STUDENT: "user-graduate",
+        FRÜH: "sun",
+        SPÄT: "cloud-sun",
+        NACHT: "cloud-moon",
+        UNBEGRENZT: "calendar-check",
+        PAAR_WOCHEN: "calendar-week",
+        EINIGE_MONATE: "calendar-alt",
+        NICHT_BESCHÄFTIGT: "user-plus",
+        AUßERHALB: "user"
+    };
+
+    for (const [key, icon] of Object.entries(materialIcons)) {
+        $(`.radio-cards .form-check-input[value=${key}]`).next().find('.radio-card').prepend(`<i class="material-icons">${icon}</i>`);
+    }
+
+    for (const [key, icon] of Object.entries(fontawesomeIcons)) {
+        $(`.radio-cards .form-check-input[value=${key}]`).next().find('.radio-card').prepend(`<i class="fas fa-${icon}"></i>`);
+    }
+    
+</script>
