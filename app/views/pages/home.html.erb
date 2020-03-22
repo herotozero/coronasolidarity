@@ -82,30 +82,8 @@
     </div>
   </div>
 </div>
-
 <script type="text/javascript">
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-    async function getLonLatFromCity(city) {
-        let reponse  = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${city}.json?access_token=pk.eyJ1IjoiaGVyYmVydHRvdCIsImEiOiJjazgxc3U4bjIwaXpkM25tczEyc2JxYXNjIn0.NkeHkNFThuchdMw4dElBrw`);
-        return await reponse.json();
-    }
-
-    async function setMarkers(cities) {
-        console.log(cities);
-        cities.forEach(function(city){
-            sleep(0)
-                .then(_ => getLonLatFromCity(city))
-                .then(data =>
-                        L.marker([data['features'][0]['center'][1], data['features'][0]['center'][0]])
-                            .addTo(mymap)
-                    )
-        })
-    }
-
-    var mymap = L.map('map').setView([51.133481, 10.018343], 6);
+    let mymap = L.map('map').setView([51.133481, 10.018343], 6);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -115,5 +93,33 @@
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoiaGVyYmVydHRvdCIsImEiOiJjazgxc3U4bjIwaXpkM25tczEyc2JxYXNjIn0.NkeHkNFThuchdMw4dElBrw'
     }).addTo(mymap);
+
+    async function getLonLatFromCity(city) {
+        let reponse  = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${city}.json?access_token=pk.eyJ1IjoiaGVyYmVydHRvdCIsImEiOiJjazgxc3U4bjIwaXpkM25tczEyc2JxYXNjIn0.NkeHkNFThuchdMw4dElBrw`);
+        return await reponse.json();
+    }
+
+    async function setMarkers(cities, numbers) {
+        console.log(cities);
+        console.log(numbers);
+        let markers = L.markerClusterGroup();
+
+
+        cities.forEach(function(city){
+            getLonLatFromCity(city)
+                .then(data =>  markers.addLayer(new L.Marker([data['features'][0]['center'][1], data['features'][0]['center'][0]], {
+                icon:	new L.AwesomeNumberMarkers({
+                    number: numbers[city],
+                    markerColor: "blue"
+                })
+            }).bindPopup(`<div style="text-align: center"><b>${city}</b><\div><br>Es ist/sind <strong>${numbers[city]}</strong> Personen registriert`)
+                ))
+        });
+        mymap.addLayer(markers);
+    }
+
+
+
+
 </script>
-<%= javascript_tag "setMarkers(#{@cities.to_json.html_safe});" %>
+<%= javascript_tag "setMarkers(#{@cities.to_json.html_safe}, #{@numbers.to_json.html_safe});" %>
