@@ -17,7 +17,21 @@
         ['Egal, wo ich gebraucht werde', 'EGAL']]
     %>
 
-    <%= f.input :city, label: 'In welcher Stadt können Sie arbeiten?', wrapper_html: { class: 'step' }, :input_html => { :oninput => "validateForm()"} %>
+    <div class="form-group helper_area step">
+        <%= f.input :city, label: 'In welcher Stadt können Sie arbeiten?', :input_html => { :oninput => "validateForm()"} %>
+        <%= f.input :radius, label: 'In welchem Umkreis (in km) könnten Sie dort helfen?', as: :select, :input_html => {:onchange => "validateForm()"}, collection: [
+            ["5km", 5],
+            ["10km", 10],
+            ["15km", 15],
+            ["20km", 20],
+            ["25km", 25],
+            ["30km", 30],
+            ["40km", 40],
+            ["50km", 50],
+            ["75km", 75],
+            ["100km", 100]
+        ] %>
+    </div>
 
     <%= f.input :commitment, label: 'Mit wie viel Zeiteinsatz die Woche können Sie helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards step' }, :input_html => { :onclick => "nextStep()"}, collection: [
         ['5-6 Dienste', '5-6'],
@@ -68,7 +82,7 @@
   </div>
 
 <script>
-    window.steps = ['qualification', 'specialty', 'city', 'commitment', 'shift', 'availability', 'start_date', 'employment_status', 'contact'];
+    window.steps = ['qualification', 'specialty', 'area', 'commitment', 'shift', 'availability', 'start_date', 'employment_status', 'contact'];
     addRadioCards();
     setStep(0);
 </script>

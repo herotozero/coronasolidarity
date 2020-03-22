@@ -142,6 +142,8 @@ function validateForm() {
 
     if (stepName == "start_date") {
         formValid = true;
+    } else if (stepName == "area") {
+        formValid = !!$("#helper_city").val() && !!$("#helper_radius").val();
     } else if (stepName == "city") {
         formValid = !!$("#helper_city, #hospital_city").val();
     } else if (stepName == "helper_amount") {
