@@ -5,6 +5,16 @@
 
 .new_helper {
     text-align: center;
+
+    input[type=text], input[type=tel], input[type=email], textarea, select {
+        max-width: 300px;
+        margin: auto;
+    }
+
+    .form-group.date .d-flex {
+        max-width: 600px;
+        margin: auto;
+    }
 }
 
 .new_helper .step {
