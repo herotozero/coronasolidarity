@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # before_action :authenticate_user!
   # before_action :configure_permitted_parameters, if: :devise_controller?
-  USERS = { ENV.fetch("USER") => ENV.fetch("PASSWORD") }
+  USERS = { ENV.fetch("USER"){'corona'} => ENV.fetch("PASSWORD"){'12345'} }
 
 
   def configure_permitted_parameters
@@ -13,11 +13,11 @@ class ApplicationController < ActionController::Base
   end
 
   def new_entry_helper()
-
+    MatchHelperJob.perform_later(Helper.last)
   end
 
   def new_entry_hospital()
-
+    MatchHospitalJob.perform_later(Hospital.last)
   end
 
   protected
