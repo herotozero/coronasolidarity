@@ -1,4 +1,9 @@
 class HospitalsController < ApplicationController
+
+
+  before_action :authenticate, only: :index
+  after_action :new_entry_hospital, only: :create
+
   def new
     @hospital = Hospital.new
   end
