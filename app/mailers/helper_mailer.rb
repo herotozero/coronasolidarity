@@ -1,4 +1,5 @@
 class HelperMailer < ApplicationMailer
+  layout false
 
   def registration_email(id)
     @helper = Helper.find_by_id(id)
