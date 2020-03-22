@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_164031) do
+ActiveRecord::Schema.define(version: 2020_03_22_003903) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "helpers", force: :cascade do |t|
@@ -53,6 +54,16 @@ ActiveRecord::Schema.define(version: 2020_03_21_164031) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "matches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "helper_id"
+    t.bigint "hospital_id"
+    t.boolean "acknowledge"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["helper_id"], name: "index_matches_on_helper_id"
+    t.index ["hospital_id"], name: "index_matches_on_hospital_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -65,4 +76,6 @@ ActiveRecord::Schema.define(version: 2020_03_21_164031) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "matches", "helpers"
+  add_foreign_key "matches", "hospitals"
 end
