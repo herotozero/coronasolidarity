@@ -91,7 +91,8 @@
                     number: numbers[city],
                     markerColor: "blue"
                 })
-            })))
+            }).bindPopup(`<div style="text-align: center"><b>${city}</b><\div><br>Es ist/sind <strong>${numbers[city]}</strong> Personen registriert`)
+                ))
         });
         mymap.addLayer(markers);
     }
