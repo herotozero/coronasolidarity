@@ -1,8 +1,6 @@
 class HospitalsController < ApplicationController
 
-
-  before_action :authenticate, only: :index
-  after_action :new_entry_hospital, only: :create
+  before_action :authenticate, only: :index if Rails.env.production?
 
   def new
     @hospital = Hospital.new
@@ -13,6 +11,8 @@ class HospitalsController < ApplicationController
     @hospital.title = 'KEIN'
 
     if @hospital.save
+      SendHelperMailJob.perform_later(@hospital)
+      MatchHospitalJob.perform_later(@hospital, SecureRandom.uuid)
       redirect_to thanks_path
     else
       render 'new'
