@@ -83,10 +83,15 @@ function setStep(step) {
     $(".form-group.step").css('display', 'none');
     $(`.form-group.step.helper_${stepName}, .form-group.step.hospital_${stepName}`).css('display', 'block');
     validateForm();
+    adjustFooter();
+}
+
+function adjustFooter() {
+    $('.main-container').css('padding-bottom', $('footer').outerHeight());
 }
 
 // Prevents form submission on enter
-$(document).ready(function() {
+$(window).on("load", function() {
     $(window).keydown(function(event){
       if(event.keyCode == 13) {
         event.preventDefault();
@@ -94,8 +99,10 @@ $(document).ready(function() {
       }
     });
 
-    $('.main-container').css('padding-bottom', $('footer').outerHeight());
+    adjustFooter();
   });
+
+$(document).on("turbolinks:load", adjustFooter);
 
 function contactFormValid() {
     const contact = $('.helper_contact');
