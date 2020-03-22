@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :helpers, only: [:index, :new, :create, :destroy]
   resources :hospitals, only: [:index, :new, :create, :destroy]
 
-  get 'email_test', to: 'helpers#test_mail', as: :email_test unless if Rails.env.production?
-  get 'match_test', to: 'helpers#test_match', as: :match_test unless if Rails.env.production?
+  get 'email_test', to: 'helpers#test_mail', as: :email_test unless Rails.env.production?
+  get 'match_test', to: 'helpers#test_match', as: :match_test unless Rails.env.production?
 
   get 'approve/:id', to: 'matches#approve', as: :approve
   get 'decline/:id', to: 'matches#decline', as: :decline
