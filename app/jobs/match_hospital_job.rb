@@ -7,7 +7,7 @@ class MatchHospitalJob < ApplicationJob
     matches = []
     helpers.each do |helper|
       unless Match.exists?(hospital: hospital, helper: helper)
-        if Geocoder::Calculations.distance_between(helper.city, hospital.city, {:units => :km }) <= (helper.range + 10)
+        if Geocoder::Calculations.distance_between(helper.city, hospital.city, {:units => :km }) <= (helper.radius + 10)
           matches.append(Match.create!(hospital: hospital, helper: helper, approve: uuid, acknowledge: false))
         end
       end
