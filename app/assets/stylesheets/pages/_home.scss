@@ -1,1 +1,11 @@
 // Specific CSS for your home-page
+.landing-banner-one {
+  height: 50vh;
+  background-image: url("landing_image2.jpg");
+  background-size: cover;
+  margin: 0 !important;
+
+  .page-container {
+    margin: 0 !important;
+  }
+}
