@@ -1,7 +1,6 @@
 class HelpersController < ApplicationController
-  before_action :authenticate, only: :index
-  after_action :new_entry_hospital, only: :create
-  
+  before_action :authenticate, only: :index if Rails.env.production?
+
   def new
     @helper = Helper.new
   end
@@ -12,6 +11,7 @@ class HelpersController < ApplicationController
     print @helper.inspect
     if @helper.save
       SendHelperMailJob.perform_later(@helper)
+      MatchHelperJob.perform_later(@helper, SecureRandom.uuid)
       redirect_to thanks_path
     else
       render 'new'
@@ -29,8 +29,13 @@ class HelpersController < ApplicationController
     redirect_to helpers_path
   end
 
-  def test
+  def test_mail
     SendHelperMailJob.perform_later(Helper.last)
+    redirect_to root_path
+  end
+
+  def test_match
+    new_entry_helper()
     redirect_to root_path
   end
 
