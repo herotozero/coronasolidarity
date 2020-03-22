@@ -1,9 +1,10 @@
 <%= simple_form_for @helper, defaults: { error: 'Bitte angeben!' } do |f| %>
     <%= f.input :qualification, label: 'Welche Qualifikation / Erfahrung haben Sie?', as: :radio_buttons, :input_html => { :onclick => "nextStep()"}, wrapper_html: { class: 'radio-cards step' }, collection: [
-        ['Pflegehilfskraft/-assistenz', 'PFLEGEHILFSKRAFT'],
-        ['Exam. Krankenpfleger/in', 'PFLEGER'],
         ['Arzt/Ärztin', 'ARZT'],
+        ['Fachpflegekraft für Intensivpflege und Anästhesie', 'FACHPFLEGEKRAFT'],
+        ['Exam. Krankenpfleger/in', 'PFLEGER'],
         ['Krankenpfleger/in in der Ausbildung', 'PFLEGER_AUSBILDUNG'],
+        ['Pflegehilfskraft/-assistenz', 'PFLEGEHILFSKRAFT'],
         ['Medizinstudent/-in', 'STUDENT'],
         ['Sonstiges', 'SONSTIGES']]
     %>
