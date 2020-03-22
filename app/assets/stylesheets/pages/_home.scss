@@ -1,11 +1,22 @@
 // Specific CSS for your home-page
 .landing-banner-one {
   height: 50vh;
-  background-image: url("landing_image2.jpg");
-  background-size: cover;
-  margin: 0 !important;
-
-  .page-container {
-    margin: 0 !important;
-  }
+  padding: 2vw;
 }
+
+.landing-image-box {
+  width: 30vw;
+  height: 30vh;
+    }
+
+.landing_image {
+  max-width: 45vw;
+}
+
+.landing-banner-two {
+  height: 50vh;
+  padding: 2vw;
+  background-color: white;
+}
+
+

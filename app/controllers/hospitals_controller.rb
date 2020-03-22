@@ -8,7 +8,7 @@ class HospitalsController < ApplicationController
     @hospital.title = 'KEIN'
 
     if @hospital.save
-      redirect_to root_path
+      redirect_to thanks_path
     else
       render 'new'
     end
@@ -27,7 +27,7 @@ class HospitalsController < ApplicationController
 
   private
   def helpers_params
-    params.require(:helper).permit(:hospital_type, :city, :qualification, :specialty, :start_date, :helper_amount, :personal_note, :first_name, :last_name, :email, :phone, :title, :availability, :shift)
+    params.require(:hospital).permit(:hospital_type, :city, :qualification, :specialty, :start_date, :helper_amount, :personal_note, :first_name, :last_name, :email, :phone, :title, :availability, :shift)
   end
 
 end

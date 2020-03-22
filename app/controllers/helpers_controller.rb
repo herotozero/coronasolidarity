@@ -9,7 +9,7 @@ class HelpersController < ApplicationController
     print @helper.inspect
     if @helper.save
       SendHelperMailJob.perform_later(@helper)
-      redirect_to root_path
+      redirect_to thanks_path
     else
       render 'new'
     end
@@ -23,7 +23,7 @@ class HelpersController < ApplicationController
     @article = Helper.find(params[:id])
     @article.destroy
 
-    redirect_to helper_path
+    redirect_to helpers_path
   end
 
   def test

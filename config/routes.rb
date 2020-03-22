@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'pages#contact', as: :contact
   get 'about', to: 'pages#about', as: :about
   get 'home', to: 'pages#home', as: :home
+  get 'thanks', to: 'pages#thanks', as: :thanks
   resources :helpers, only: [:index, :new, :create, :destroy]
   resources :hospitals, only: [:index, :new, :create, :destroy]
 
