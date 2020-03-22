@@ -11,7 +11,7 @@ class HospitalsController < ApplicationController
     @hospital.title = 'KEIN'
 
     if @hospital.save
-      SendHelperMailJob.perform_later(@hospital)
+      SendHospitalMailJob.perform_later(@hospital)
       MatchHospitalJob.perform_later(@hospital, SecureRandom.uuid)
       redirect_to thanks_path
     else
