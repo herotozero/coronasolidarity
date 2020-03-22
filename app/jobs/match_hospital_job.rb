@@ -2,8 +2,8 @@ class MatchHospitalJob < ApplicationJob
   queue_as :default
 
   def perform(hospital_id, uuid)
-    hospitals = Hospital.find_by_id(hospital_id)
-    helpers = Helper.where("start_date <= ? AND qualification = ?", hospitals.start_date, hospitals.qualification)
+    hospital = Hospital.find_by_id(hospital_id)
+    helpers = Helper.where("start_date <= ? AND qualification = ?", hospital.start_date, hospital.qualification)
     matches = []
     helpers.each do |helper|
       unless Match.exists?(hospital: hospital, helper: helper)
