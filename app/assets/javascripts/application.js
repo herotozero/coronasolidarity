@@ -93,6 +93,8 @@ $(document).ready(function() {
         return false;
       }
     });
+
+    $('.main-container').css('padding-bottom', $('footer').outerHeight());
   });
 
 function contactFormValid() {
