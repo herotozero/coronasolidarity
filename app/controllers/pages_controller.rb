@@ -8,6 +8,7 @@ class PagesController < ApplicationController
     @cities.each do |city|
       @numbers[city] = data.count(city)
     end
+    @helpers = Helper.count
   end
 
   def contact
