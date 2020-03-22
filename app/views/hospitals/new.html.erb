@@ -1,0 +1,61 @@
+<%= simple_form_for @hospital, defaults: { error: 'Bitte angeben!' } do |f| %>
+    <%= f.input :hospital_type, label: 'Welcher Gesundheitsversorgungstyp beschreibt Sie am besten? (Einfachauswahl)', as: :radio_buttons, :input_html => { :onclick => "nextStep()"}, wrapper_html: { class: 'step' }, collection: [
+        ['Maximalversorger', 'MAXIMALVERSORGER'],
+        ['Peripheres Krankenhaus', 'PERIPHERES_KRANKENHAUS'],
+        ['Pflegeeinrichtung (stationär)', 'PFLEGE_STAT'],
+        ['Pflegeeinrichtung (ambulant)', 'PFLEGE_AMB']]
+    %>
+
+    <%= f.input :city, label: 'In welcher Stadt sind Sie tätig?', wrapper_html: { class: 'step' }, :input_html => { :oninput => "validateStrings()"} %>
+
+    <%= f.input :qualification, label: 'Welches Personal benötigen Sie?', as: :radio_buttons, :input_html => { :onclick => "nextStep()"}, wrapper_html: { class: 'step' }, collection: [
+        ['Arzt/Ärztin', 'ARZT'],
+        ['Fachpflegekraft für Intensivpflege und Anästhesie', 'FACHPFLEGEKRAFT'],
+        ['Exam. Krankenpfleger/in', 'PFLEGER'],
+        ['Krankenpfleger/in in der Ausbildung', 'PFLEGER_AUSBILDUNG'],
+        ['Pflegehilfskrafst/-assistenz', 'PFLEGEHILFSKRAFT'],
+        ['Medizinstudent/-in', 'STUDENT'],
+        ['Sonstiges', 'SONSTIGES']]
+    %>
+
+    <%= f.input :specialty, label: 'In welchem Bereich benötigen Sie Unterstützung?', as: :radio_buttons, wrapper_html: { class: 'step' }, :input_html => { :onclick => "nextStep()"}, collection: [
+        ['Normalstation', 'NORMALSTATION'],
+        ['Intensivstation', 'INTENSIVSTATION'],
+        ['Notaufnahme', 'NOTAUFNAHME'],
+        ['Sonstiges', 'SONSTIGES']]
+    %>
+
+    <%= f.input :helper_amount, label: 'Wie viele Unterstützer benötigen Sie??', wrapper_html: { class: 'step' }, :input_html => { :oninput => "validateStrings()"} %>
+
+    <%= f.input :shift, label: 'Welche Dienstzeiten?', as: :radio_buttons, wrapper_html: { class: 'step' }, :input_html => { :onclick => "nextStep()"}, collection: [
+        ['Frühdienst', 'FRÜH'],
+        ['Spätdienst', 'SPÄT'],
+        ['Nachtdienst', 'NACHT'],
+        ['Alle', 'ALLE']]
+    %>
+
+    <%= f.input :availability, label: 'Wie viele Dienste pro Woche?', as: :radio_buttons, wrapper_html: { class: 'step' }, :input_html => { :onclick => "nextStep()"}, collection: [
+        ['5-6 Dienste', '5-6'],
+        ['3-4 Dienste', '3-4'],
+        ['1-2 Dienste', '1-2']]
+    %>
+
+    <%= f.input :start_date, label: 'Ab wann benötigen Sie Unterstützung?', wrapper_html: { class: 'step' } %>
+
+    <div class="form-group helper_contact step">
+        <%= f.input :first_name, label: "Vorname", :input_html => { :oninput => "validateStrings()"} %>
+        <%= f.input :last_name, label: "Nachname", :input_html => { :oninput => "validateStrings()"} %>
+        <%= f.input :email, as: :email, label: "Email", :input_html => { :oninput => "validateStrings()"} %>
+        <%= f.input :phone, as: :tel, label: "Telefon", :input_html => { :oninput => "validateStrings()"} %>
+        <%= f.input :personal_note, label: "Zusätzliche Informationen", placeholder: "Sollten wir sonst noch etwas wissen?" %>
+    </div>
+
+    <%# <button type="button" onclick="prevStep()" class="btn btn-light new-helper-prev">Zurück</button> %>
+    <%# <button type="button" onclick="nextStep()" class="btn btn-primary new-helper-next">Weiter</button> %>
+
+    <%# <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+    </div> %>
+
+    <%= f.button :submit, "Absenden", class: "btn btn-primary new-helper-submit" %>
+  <% end %>
