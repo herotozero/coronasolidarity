@@ -1,0 +1,29 @@
+<%= simple_form_for @hospital, defaults: { error: 'Bitte angeben!' } do |f| %>
+    <%= f.input :hospital_type, label: 'Welcher Gesundheitsversorgungstyp beschreibt Sie am besten? (Einfachauswahl)', as: :radio_buttons, :input_html => { :onclick => "nextStep()"}, wrapper_html: { class: 'step' }, collection: [
+        ['Maximalversorger', 'MAXIMALVERSORGER'],
+        ['Peripheres Krankenhaus', 'PERIPHERES_KRANKENHAUS'],
+        ['Pflegeeinrichtung (stationär)', 'PFLEGE_STAT'],
+        ['Pflegeeinrichtung (ambulant)', 'PFLEGE_AMB']]
+    %>
+
+    <%= f.input :city, label: 'In welcher Stadt sind Sie tätig?', wrapper_html: { class: 'step' }, :input_html => { :oninput => "validateStrings()"} %>
+
+    <%= f.input :qualification, label: 'Welches Personal benötigen Sie?', as: :radio_buttons, :input_html => { :onclick => "nextStep()"}, wrapper_html: { class: 'step' }, collection: [
+        ['Arzt/Ärztin', 'ARZT'],
+        ['Fachpflegekraft für Intensivpflege und Anästhesie', 'FACHPFLEGEKRAFT'],
+        ['Exam. Krankenpfleger/in', 'PFLEGER'],
+        ['Krankenpfleger/in in der Ausbildung', 'PFLEGER_AUSBILDUNG'],
+        ['Pflegehilfskraft/-assistenz', 'PFLEGEHILFSKRAFT'],
+        ['Medizinstudent/-in', 'STUDENT'],
+        ['Sonstiges', 'SONSTIGES']]
+    %>
+
+    <button type="button" onclick="prevStep()" class="btn btn-light new-helper-prev">Zurück</button>
+    <button type="button" onclick="nextStep()" class="btn btn-primary new-helper-next">Weiter</button>
+
+    <%# <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+    </div> %>
+
+    <%= f.button :submit, "Absenden", class: "btn btn-primary new-helper-submit" %>
+  <% end %>

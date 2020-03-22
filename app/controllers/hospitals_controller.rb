@@ -1,13 +1,13 @@
 class HospitalsController < ApplicationController
   def new
-    @helper = Hospital.new
+    @hospital = Hospital.new
   end
 
   def create
-    @helper = Hospital.new(helpers_params)
-    @helper.title = 'KEIN'
+    @hospital = Hospital.new(helpers_params)
+    @hospital.title = 'KEIN'
 
-    if @helper.save
+    if @hospital.save
       redirect_to root_path
     else
       render 'new'
@@ -15,12 +15,12 @@ class HospitalsController < ApplicationController
   end
 
   def index
-    @helpers = Hospital.all
+    @hospitals = Hospital.all
   end
 
   def destroy
-    @article = Hospital.find(params[:id])
-    @article.destroy
+    @hospital = Hospital.find(params[:id])
+    @hospital.destroy
 
     redirect_to hospital_path
   end
