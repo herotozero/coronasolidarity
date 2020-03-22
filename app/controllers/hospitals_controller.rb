@@ -8,7 +8,7 @@ class HospitalsController < ApplicationController
     @hospital.title = 'KEIN'
 
     if @hospital.save
-      redirect_to root_path
+      redirect_to thanks_path
     else
       render 'new'
     end
