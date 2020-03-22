@@ -103,6 +103,7 @@ $(window).on("load", function() {
   });
 
 $(document).on("turbolinks:load", adjustFooter);
+$(window).on("resize", adjustFooter);
 
 function contactFormValid() {
     const contact = $('.helper_contact');
