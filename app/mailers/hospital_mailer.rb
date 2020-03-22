@@ -1,7 +1,6 @@
 class HospitalMailer < ApplicationMailer
   layout false, except: :match
-  default_
-
+  
   def registration(id)
     @hospital = Hospital.find_by_id(id)
     @edit_url = 'TEST'
