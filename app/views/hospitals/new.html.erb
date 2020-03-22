@@ -10,7 +10,7 @@
 
     <%= f.input :city, label: 'In welcher Stadt sind Sie tätig?', wrapper_html: { class: 'step' }, :input_html => { :oninput => "validateForm()"} %>
 
-    <%= f.input :qualification, label: 'Welches Personal benötigen Sie?', as: :radio_buttons, :input_html => { :onclick => "nextStep()"}, wrapper_html: { class: 'step radio-cards' }, collection: [
+    <%= f.input :qualification, label: 'Welches Personal benötigen Sie? (Mehrfachauswahl)', as: :check_boxes, :input_html => { :onclick => "validateForm()"}, wrapper_html: { class: 'step radio-cards' }, collection: [
         ['Arzt/Ärztin', 'ARZT'],
         ['Fachpflegekraft für Intensivpflege und Anästhesie', 'FACHPFLEGEKRAFT'],
         ['Exam. Krankenpfleger/in', 'PFLEGER'],
@@ -20,7 +20,7 @@
         ['Sonstiges', 'SONSTIGES']]
     %>
 
-    <%= f.input :specialty, label: 'In welchem Bereich benötigen Sie Unterstützung?', as: :radio_buttons, wrapper_html: { class: 'step radio-cards' }, :input_html => { :onclick => "nextStep()"}, collection: [
+    <%= f.input :specialty, label: 'In welchem Bereich benötigen Sie Unterstützung? (Mehrfachauswahl)', as: :check_boxes, wrapper_html: { class: 'step radio-cards' }, :input_html => { :onclick => "validateForm()"}, collection: [
         ['Normalstation', 'NORMALSTATION'],
         ['Intensivstation', 'INTENSIVSTATION'],
         ['Notaufnahme', 'NOTAUFNAHME'],
