@@ -3,8 +3,8 @@
     <h1>Helfen Sie jetzt!</h1>
     <h5 style="padding-bottom: 1vh;">Leisten Sie medizinische oder pflegerische Hilfe als Antwort auf die Corona Pandemie.</h5>
     <div class="d-flex align-items-center">
-      <%= link_to "Als Helfer registrieren", new_helper_path, class: 'btn-mint' %>
-      <%= link_to "Helfer anfragen", new_hospital_path, class: 'btn-mint' %>
+      <%= link_to "Als Helfer:in registrieren", new_helper_path, class: 'btn-mint' %>
+      <%= link_to "Helfer:innen anfragen", new_hospital_path, class: 'btn-mint' %>
     </div>
   </div>
   <div class="landing-image-box">
@@ -24,21 +24,28 @@
 <div class="landing-banner-three">
   <h2 style="padding-bottom: 2vh; text-align: center;">So läuft es ab...</h2>
   <div class="d-flex align-items-center">
-    <div class="landing-card">
-      <div>icon1</div>
+    <div class="landing-card d-flex flex-column justify-content-end">
       <div>
-        <p>Sie registrieren sich als medizinischer oder pflegerischer Helfer auf unserer Platform.</p>
+       <%= image_tag "helper.png", class:"landing_image" %>
+      </div>
+      <div>
+        <p class="process">Sie registrieren sich als medizinischer oder pflegerischer Helfer auf unserer Platform.</p>
       </div>
     </div>
-    <div class="landing-card">
-      <div>icon2</div>
+    <div class="landing-card d-flex flex-column justify-content-end">
       <div>
-        <p>Wir vermitteln zwischen beiden Parteien und benachrichtigen Sie. Transparent. Sicher. Kostenfrei.</p>
+         <%= image_tag "match.png", class:"landing_image" %>
       </div>
-    </div><div class="landing-card">
-      <div>icon3</div>
       <div>
-        <p>Sie registrieren ihr Krankenhaus oder Praxis und geben ihren Bedarf an Unterstützer an.</p>
+        <p class="process-match">Wir vermitteln zwischen beiden Parteien und benachrichtigen Sie. Transparent. Sicher. Kostenfrei.</p>
+      </div>
+    </div>
+    <div class="landing-card d-flex flex-column justify-content-end">
+      <div>
+       <%= image_tag "hosptial.png", class:"landing_image" %>
+      </div>
+      <div>
+        <p class="process">Sie registrieren ihr Krankenhaus oder Praxis und geben ihren Bedarf an Unterstützer an.</p>
       </div>
     </div>
   </div>
@@ -54,60 +61,47 @@
   <div class="card-deck mb-3 text-center">
     <div class="card mb-4 shadow-sm">
       <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Helfer:innen</h4>
+        <h4 class="my-0 font-weight-normal text-left">Potenzielle Helfer:innen sind...</h4>
       </div>
       <div class="card-body">
-        <h1 class="card-title pricing-card-title">Helfen</h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>Medizinstudent:innen ab dem x-ten Semester</li>
+        <ul class="mt-3 mb-4 text-left">
+          <li>Medizinstudent:innen</li>
           <li>Personen in der Pflege-Ausbildung</li>
           <li>Ärzt:innen & Pflegehelfer:innen</li>
-          <li>Andre Menschen mit medizinischer oder pflegerischer Ausbildung</li>
+          <li>Andere Menschen mit medizinischer/pflegerischer Ausbildung</li>
         </ul>
-        <%= link_to "Als Helfer:in melden", new_helper_path, class: 'btn-mint' %>
+        <%= link_to "Als Helfer:in registrieren", new_helper_path, class: 'btn-mint' %>
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
       <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Krankenhäuser</h4>
+        <h4 class="my-0 font-weight-normal text-left">Krankenhäuser können...</h4>
       </div>
       <div class="card-body">
-        <h1 class="card-title pricing-card-title">Helfen lassen</h1>
-        <ul class="list-unstyled mt-3 mb-4">
+        <ul class="mt-3 mb-4 text-left">
           <li>Konkrete Bedarfe anmelden</li>
           <li>Kontaktstelle benennen</li>
           <li>Alle gemeldeten Herfer:innen im Einzugsbereich werden informiert</li>
-          <li>-</li>
         </ul>
-        <%= link_to "Als Krankenhaus melden", '', class: 'btn-mint', style: 'color:#fff' %>
+        <%= link_to "Helfer:innen anfragen", '', class: 'btn-mint', style: 'color:#fff' %>
       </div>
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="row mb-2">
-    <div class="col-md-6">
-      <div class="card flex-md-row mb-4 box-shadow h-md-250">
-        <div class="card-body d-flex flex-column align-items-start">
-          <strong class="d-inline-block mb-2 text-primary">Mitmachen!</strong>
-          <h3 class="mb-0">
-            <p class="text-dark">Was macht Corona Solidarity?</p>
-          </h3>
-          <p class="card-text mb-2">Deutschland und nahezu die gesamte Welt steht gerade vor einer großen Herausforderung - der Eindämmung und Bekämpfung der rasanten Ausbreitung von COVID-19.</p>
-          <p class="card-text mb-2">Um die Krankenhäuser und andere medizinische Einrichtungen zu entlasten, wurde mit Corona Solidarity im Rahmen des Hackathons der Deutschen Bundesregierung eine zentrale <strong>Vermittlungsplattform für Krankenhäuser und Helfer:innen</strong> aus medizinischen Berufen / Ausbildungen geschaffen.</p>
-          <p class="card-text mb-2">Über die Plattform können Kapazitäten sowie Skill-Level des medizinischen/ pflegerischen Hilfspersonal zentral erfasst und mit den Bedarfen der Krankenhäuser abgeglichen werden. Corona Solidarity vermittelt im Anschluss den Kontakt zwischen beiden Parteien.</p>
-        </div>
+
+<div class="landing-banner-two text-center mb-4">
+  <div style="padding: 15vh 20vw; display: inline-block;">
+    <h2 style="padding-bottom: 2vh; text-align: center;">Bisher haben sich <%= @helpers %> Helfer registriert</h2>
+  </div>
+</div>
+
+<div class="container mb-4">
+  <div class="col-md-12">
+      <div class="card flex-md-row box-shadow h-md-250">
+          <div id="map" class="map" style="height: 600px; width: 100%"></div>
 
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="card flex-md-row mb-4 box-shadow h-md-250">
-        <div class="card-body d-flex flex-column align-items-start">
-          <div id="map" class="map" style="height: 600px; width: 100%"></div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 <script type="text/javascript">
     let mymap = L.map('map').setView([51.133481, 10.018343], 6);
@@ -144,9 +138,6 @@
         });
         mymap.addLayer(markers);
     }
-
-
-
 
 </script>
 <%= javascript_tag "setMarkers(#{@cities.to_json.html_safe}, #{@numbers.to_json.html_safe});" %>
