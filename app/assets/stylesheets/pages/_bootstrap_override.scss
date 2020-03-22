@@ -3,6 +3,14 @@
     font-weight: bold;
 }
 
+.new_helper {
+    text-align: center;
+}
+
+.new_helper .step {
+    display: none;
+}
+
 .radio-cards {
     .form-check {
         display: inline-block;
@@ -26,7 +34,7 @@
             justify-content: center;
             
             i {
-                font-size: 20px;
+                font-size: 28px;
                 padding-bottom: 10px;
             }
 
