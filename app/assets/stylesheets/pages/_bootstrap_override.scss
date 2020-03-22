@@ -42,13 +42,14 @@
             align-items: center;
             text-align: center;
             justify-content: center;
-            
+
             i {
                 font-size: 28px;
                 padding-bottom: 10px;
+                color: rgb(111, 188, 180);
             }
 
-            &:hover { 
+            &:hover {
                 border-color: $gray-500; cursor: pointer;
             }
         }
@@ -56,7 +57,7 @@
         .form-check-input {
             display: none;
         }
-    
+
         .form-check-input:checked + label .radio-card {
             border-color: $blue;
         }

@@ -1,3 +1,4 @@
+<div class="page-container">
 <%= simple_form_for @helper, defaults: { error: 'Bitte angeben!' } do |f| %>
     <%= f.input :qualification, label: 'Welche Qualifikation / Erfahrung haben Sie?', as: :radio_buttons, :input_html => { :onclick => "nextStep()"}, wrapper_html: { class: 'radio-cards step' }, collection: [
         ['Arzt/Ärztin', 'ARZT'],
@@ -16,7 +17,7 @@
         ['Egal, wo ich gebraucht werde', 'EGAL']]
     %>
 
-    <%= f.input :city, label: 'In welcher Stadt können Sie arbeiten?', wrapper_html: { class: 'step' }, :input_html => { :oninput => "validateStrings()"} %>
+    <%= f.input :city, label: 'In welcher Stadt können Sie arbeiten?', wrapper_html: { class: 'step' }, :input_html => { :oninput => "validateForm()"} %>
 
     <%= f.input :commitment, label: 'Mit wie viel Zeiteinsatz die Woche können Sie helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards step' }, :input_html => { :onclick => "nextStep()"}, collection: [
         ['5-6 Dienste', '5-6'],
@@ -48,10 +49,10 @@
     %>
 
     <div class="form-group helper_contact step">
-        <%= f.input :first_name, label: "Vorname", :input_html => { :oninput => "validateStrings()"} %>
-        <%= f.input :last_name, label: "Nachname", :input_html => { :oninput => "validateStrings()"} %>
-        <%= f.input :email, as: :email, label: "Email", :input_html => { :oninput => "validateStrings()"} %>
-        <%= f.input :phone, as: :tel, label: "Telefon", :input_html => { :oninput => "validateStrings()"} %>
+        <%= f.input :first_name, label: "Vorname", :input_html => { :oninput => "validateForm()"} %>
+        <%= f.input :last_name, label: "Nachname", :input_html => { :oninput => "validateForm()"} %>
+        <%= f.input :email, as: :email, label: "Email", :input_html => { :oninput => "validateForm()"} %>
+        <%= f.input :phone, as: :tel, label: "Telefon", :input_html => { :oninput => "validateForm()"} %>
         <%= f.input :personal_note, label: "Zusätzliche Informationen", placeholder: "Sollten wir sonst noch etwas wissen?" %>
     </div>
 
@@ -64,106 +65,10 @@
 
     <%= f.button :submit, "Absenden", class: "btn btn-primary new-helper-submit" %>
   <% end %>
+  </div>
 
 <script>
-    var steps = ['qualification', 'specialty', 'city', 'commitment', 'shift', 'availability', 'start_date', 'employment_status', 'contact'];
-
-    function contactFormValid() {
-        const formInvalid = !$("#helper_first_name").val() | !$("#helper_last_name").val() | !$("#helper_email").val() | !$("#helper_phone").val();
-        return !formInvalid;
-    }
-
-    function setStep(step) {
-        window.currentStep = step;
-        const stepName = steps[window.currentStep];
-        $(".new_helper .step").css('display', 'none');
-        $(`.new_helper .helper_${stepName}`).css('display', 'block');
-
-        // Buttons
-        $('.new_helper .btn').css('display', 'inline-block');
-        $('.new_helper .new-helper-submit').css('display', 'none');
-
-        if (window.currentStep == 0) {
-            $('.new_helper .new-helper-prev').css('display', 'none');
-        }
-
-        if (window.currentStep == steps.length - 1) {
-            $('.new_helper .new-helper-next').css('display', 'none');
-            $('.new_helper .new-helper-submit').css('display', 'inline-block');
-            $('.new_helper .new-helper-submit').prop('disabled', !contactFormValid());
-        }
-
-        let formValid = $(`.helper_${stepName} input`).is(':checked');
-
-        if (stepName == "start_date") {
-            formValid = true;
-        } else if (stepName == "city") {
-            formValid = !!$("#helper_city").val();
-        }
-
-        $('.new_helper .new-helper-next').prop('disabled', !formValid);
-    }
-
-    function validateStrings() {
-        const stepName = steps[window.currentStep];
-
-        if (stepName == "city") {
-            const formValid = !!$("#helper_city").val();
-            $('.new_helper .new-helper-next').prop('disabled', !formValid);
-        } else {
-            $('.new_helper .new-helper-submit').prop('disabled', !contactFormValid());
-        }
-
-    }
-
-    function nextStep() {
-        setStep(window.currentStep + 1);
-    }
-
-    function prevStep() {
-        setStep(window.currentStep - 1);
-    }
-</script>
-
-<script>
-    $('.form-group.radio-cards label:not(:has(>div.radio-card))').wrapInner("<div class='radio-card'></div>");
-
-    // Icons
-    var materialIcons = {
-        SONSTIGES: "add",
-        NORMALSTATION: "add_circle_outline",
-        INTENSIVSTATION: "hotel",
-        NOTAUFNAHME: "add_location",
-        EGAL: "check_circle_outline",
-        '5-6': "filter_5",
-        '3-4': "filter_3",
-        '1-2': 'filter_1',
-        KRANKENHAUS: "apartment",
-        PFLEGER: "home_work"
-    };
-
-    var fontawesomeIcons = {
-        PFLEGEHILFSKRAFT: "user-plus",
-        ARZT: "user-md",
-        PFLEGER_AUSBILDUNG: "user-edit",
-        STUDENT: "user-graduate",
-        FRÜH: "sun",
-        SPÄT: "cloud-sun",
-        NACHT: "cloud-moon",
-        UNBEGRENZT: "calendar-check",
-        PAAR_WOCHEN: "calendar-week",
-        EINIGE_MONATE: "calendar-alt",
-        NICHT_BESCHÄFTIGT: "user-plus",
-        AUßERHALB: "user"
-    };
-
-    for (const [key, icon] of Object.entries(materialIcons)) {
-        $(`.radio-cards .form-check-input[value=${key}]`).next().find('.radio-card').prepend(`<i class="material-icons">${icon}</i>`);
-    }
-
-    for (const [key, icon] of Object.entries(fontawesomeIcons)) {
-        $(`.radio-cards .form-check-input[value=${key}]`).next().find('.radio-card').prepend(`<i class="fas fa-${icon}"></i>`);
-    }
-
+    window.steps = ['qualification', 'specialty', 'city', 'commitment', 'shift', 'availability', 'start_date', 'employment_status', 'contact'];
+    addRadioCards();
     setStep(0);
 </script>
