@@ -35,13 +35,12 @@ class HelpersController < ApplicationController
   end
 
   def test_match
-    new_entry_helper()
     redirect_to root_path
   end
 
   private
   def helpers_params
-    params.require(:helper).permit(:title, :first_name, :last_name, :email, :phone, :qualification, :radius, :specialty, :availability, :shift, :city, :commitment, :start_date, :employment_status)
+    params.require(:helper).permit(:title, :first_name, :last_name, :email, :phone, :qualification, :radius, :specialty, :availability, :shift, :city, :commitment, :start_date, :employment_status, :personal_note)
   end
 
 end

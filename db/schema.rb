@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_172822) do
+ActiveRecord::Schema.define(version: 2020_03_22_205334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2020_03_22_172822) do
   create_table "hospitals", force: :cascade do |t|
     t.string "hospital_type"
     t.string "city"
-    t.string "qualification"
-    t.string "specialty"
+    t.string "qualification", array: true
+    t.string "specialty", array: true
     t.date "start_date"
     t.integer "helper_amount"
     t.text "personal_note"
