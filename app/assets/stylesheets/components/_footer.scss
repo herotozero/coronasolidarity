@@ -1,5 +1,74 @@
-.footer {
-  height: 20vh;
-  background: $gray;
-  padding: 1vw;
+footer {
+  background-attachment: fixed;
+  background-color: $light-mint;
+  background-image: url(https://s7.postimg.org/uyf0oioaz/footer-bg.png);
+  background-size: cover;
+  background-position: bottom;
+  color: $gray;
+}
+
+footer ul {
+  padding-left: 0;
+}
+
+footer a {
+  color: $gray;
+}
+
+.fa-twitter:before {
+  color: $mint;
+}
+
+.social-pet li {
+  display: inline-block;
+  margin-right: 10px;
+}
+.social-pet li a {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  text-align: center;
+  display: block;
+  line-height: 35px;
+  background-color: $mint;
+  color: white;
+  .fa-twitter:before {
+    color: white;
+  }
+}
+
+.recent-post li {
+  display: block;
+  margin-bottom: 25px;
+}
+.recent-post li label {
+  float: left;
+  border: 2px solid $gray;
+  padding: 1px 7px;
+  text-align: center;
+}
+
+footer .input-group-addon {
+  background-color: #0141a2;
+  padding: 8px;
+  height: 37px;
+}
+.f-address li {
+  display: inline-block;
+}
+
+/*=-Copyright-=*/
+.copyright {
+  background-color: #111;
+  padding: 12px 0;
+  font-size:14px;
+}
+
+.fa-envelope {
+  color: $mint !important;
+}
+
+#basic-addon2 {
+  color: white !important;
+  background-color: $mint !important;
 }
