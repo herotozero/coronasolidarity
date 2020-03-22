@@ -1,11 +1,14 @@
 <div class="landing-banner-one d-flex align-items-center">
-  <div style="width: 50vw;">
+  <div style="width: 50vw">
     <h1>Helfen Sie jetzt!</h1>
     <h5 style="padding-bottom: 1vh;">Leisten Sie medizinische oder pflegerische Hilfe als Antwort auf die Corona Pandemie.</h5>
     <div class="d-flex align-items-center">
       <%= link_to "Als Helfer registrieren", new_helper_path, class: 'btn-mint' %>
       <%= link_to "Helfer anfragen", new_helper_path, class: 'btn-mint' %>
     </div>
+  </div>
+  <div class="landing-image-box">
+    <%= image_tag "landing_image_green.svg", class:"landing_image" %>
   </div>
 </div>
 
