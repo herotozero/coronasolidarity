@@ -1,0 +1,34 @@
+.btn-mint {
+  display: inline-block;
+  border: 1px solid $mint;
+  box-sizing: border-box;
+  border-radius: $rad;
+  padding: 6px $md;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  margin-right: $md;
+
+  background-color: $mint;
+  color: white;
+  outline:none;
+
+
+  &:hover {
+    background-color: white;
+    color: $mint;
+    text-decoration: none;
+  }
+}
+
+.outline {
+  text-decoration: none;
+  background-color: white;
+  color: $mint;
+  outline:none;
+
+  &:hover {
+    background-color: $mint;
+    color: white;
+    text-decoration: none;
+  }
+}

@@ -51,7 +51,7 @@ p_note = [
     'Hinsichtlich des Orts bin ich ein wenig flexibel'
 ]
 puts "Creating 7 Helpers"
-200.times do
+5.times do
   Helper.create!(
       title: titles.sample,
       first_name: f_names.sample,

@@ -1,6 +1,27 @@
+<div class="landing-banner-one d-flex align-items-center">
+  <div style="width: 50vw;">
+    <h1>Helfen Sie jetzt!</h1>
+    <h5 style="padding-bottom: 1vh;">Leisten Sie medizinische oder pflegerische Hilfe als Antwort auf die Corona Pandemie.</h5>
+    <div class="d-flex align-items-center">
+      <%= link_to "Als Helfer registrieren", new_helper_path, class: 'btn-mint' %>
+      <%= link_to "Helfer anfragen", new_helper_path, class: 'btn-mint' %>
+    </div>
+  </div>
+</div>
+
+<div class="landing-banner-two">
+
+</div>
+
+<div class="landing-banner-three">
+
+</div>
+
+<%-# Alte Landing Page Below -%>
+
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
   <h1 class="display-4">Helfe jetzt!</h1>
-  <p class="lead">Leisten Sie medizinische oder pflegerische Hilfe - dort wo sie heute oder morgen dringend benötigt wird.</p>
+  <p class="lead">Leisten Sie medizinische oder pflegerische Hilfe als Antwort auf die Corona Pandemie.</p>
 </div>
 <div class="container">
   <div class="card-deck mb-3 text-center">
@@ -16,7 +37,7 @@
           <li>Ärzt:innen & Pflegehelfer:innen</li>
           <li>Andre Menschen mit medizinischer oder pflegerischer Ausbildung</li>
         </ul>
-        <%= link_to "Als Helfer:in melden", new_helper_path, class: 'btn btn-lg btn-block btn-outline-primary' %>
+        <%= link_to "Als Helfer:in melden", new_helper_path, class: 'btn-mint' %>
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
@@ -31,7 +52,7 @@
           <li>Alle gemeldeten Herfer:innen im Einzugsbereich werden informiert</li>
           <li>-</li>
         </ul>
-        <%= link_to "Als Krankenhaus melden", '', class: 'btn btn-lg btn-block btn-primary', style: 'color:#fff' %>
+        <%= link_to "Als Krankenhaus melden", '', class: 'btn-mint', style: 'color:#fff' %>
       </div>
     </div>
   </div>
@@ -61,30 +82,8 @@
     </div>
   </div>
 </div>
-
 <script type="text/javascript">
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-    async function getLonLatFromCity(city) {
-        let reponse  = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${city}.json?access_token=pk.eyJ1IjoiaGVyYmVydHRvdCIsImEiOiJjazgxc3U4bjIwaXpkM25tczEyc2JxYXNjIn0.NkeHkNFThuchdMw4dElBrw`);
-        return await reponse.json();
-    }
-    
-    async function setMarkers(cities) {
-        console.log(cities);
-        cities.forEach(function(city){
-            sleep(0)
-                .then(_ => getLonLatFromCity(city))
-                .then(data =>
-                        L.marker([data['features'][0]['center'][1], data['features'][0]['center'][0]])
-                            .addTo(mymap)
-                    )
-        })
-    }
-
-    var mymap = L.map('map').setView([51.133481, 10.018343], 6);
+    let mymap = L.map('map').setView([51.133481, 10.018343], 6);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -94,5 +93,33 @@
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoiaGVyYmVydHRvdCIsImEiOiJjazgxc3U4bjIwaXpkM25tczEyc2JxYXNjIn0.NkeHkNFThuchdMw4dElBrw'
     }).addTo(mymap);
+
+    async function getLonLatFromCity(city) {
+        let reponse  = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${city}.json?access_token=pk.eyJ1IjoiaGVyYmVydHRvdCIsImEiOiJjazgxc3U4bjIwaXpkM25tczEyc2JxYXNjIn0.NkeHkNFThuchdMw4dElBrw`);
+        return await reponse.json();
+    }
+
+    async function setMarkers(cities, numbers) {
+        console.log(cities);
+        console.log(numbers);
+        let markers = L.markerClusterGroup();
+
+
+        cities.forEach(function(city){
+            getLonLatFromCity(city)
+                .then(data =>  markers.addLayer(new L.Marker([data['features'][0]['center'][1], data['features'][0]['center'][0]], {
+                icon:	new L.AwesomeNumberMarkers({
+                    number: numbers[city],
+                    markerColor: "blue"
+                })
+            }).bindPopup(`<div style="text-align: center"><b>${city}</b><\div><br>Es ist/sind <strong>${numbers[city]}</strong> Personen registriert`)
+                ))
+        });
+        mymap.addLayer(markers);
+    }
+
+
+
+
 </script>
-<%= javascript_tag "setMarkers(#{@cities.to_json.html_safe});" %>
+<%= javascript_tag "setMarkers(#{@cities.to_json.html_safe}, #{@numbers.to_json.html_safe});" %>

@@ -17,4 +17,6 @@
 //= require popper.js/dist/umd/popper
 //= require bootstrap/dist/js/bootstrap
 //= require leaflet.js
+//= require leaflet_awesome_number_markers.js
+//= require leaflet.markercluster/dist/leaflet.markercluster
 //= require_tree .
