@@ -1,47 +1,47 @@
 <%= simple_form_for @helper, defaults: { error: 'Bitte angeben!' } do |f| %>
-    <%= f.input :qualification, label: 'Welche Qualifikation / Erfahrung hast Du?', as: :radio_buttons, :input_html => { :onclick => "nextStep()"}, wrapper_html: { class: 'radio-cards step' }, collection: [
+    <%= f.input :qualification, label: 'Welche Qualifikation / Erfahrung haben Sie?', as: :radio_buttons, :input_html => { :onclick => "nextStep()"}, wrapper_html: { class: 'radio-cards step' }, collection: [
         ['Pflegehilfskraft/-assistenz', 'PFLEGEHILFSKRAFT'],
-        ['Exam. Gesundheits-/ und Krankenpfleger/in', 'PFLEGER'],
+        ['Exam. Krankenpfleger/in', 'PFLEGER'],
         ['Arzt/Ärztin', 'ARZT'],
-        ['Gesundheits-/ und Krankenpfleger/in in der Ausbildung', 'PFLEGER_AUSBILDUNG'],
+        ['Krankenpfleger/in in der Ausbildung', 'PFLEGER_AUSBILDUNG'],
         ['Medizinstudent/-in', 'STUDENT'],
         ['Sonstiges', 'SONSTIGES']]
     %>
 
-    <%= f.input :specialty, label: 'In welchem Bereich möchtest Du gerne helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards step' }, :input_html => { :onclick => "nextStep()"}, collection: [
+    <%= f.input :specialty, label: 'In welchem Bereich möchteten Sie gerne helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards step' }, :input_html => { :onclick => "nextStep()"}, collection: [
         ['Normalstation', 'NORMALSTATION'],
         ['Intensivstation', 'INTENSIVSTATION'],
         ['Notaufnahme', 'NOTAUFNAHME'],
         ['Egal, wo ich gebraucht werde', 'EGAL']]
     %>
 
-    <%= f.input :city, label: 'In welcher Stadt kannst Du arbeiten?', wrapper_html: { class: 'step' }, :input_html => { :oninput => "validateStrings()"} %>
+    <%= f.input :city, label: 'In welcher Stadt können Sie arbeiten?', wrapper_html: { class: 'step' }, :input_html => { :oninput => "validateStrings()"} %>
 
-    <%= f.input :commitment, label: 'Mit wie viel Zeiteinsatz die Woche kannst Du helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards step' }, :input_html => { :onclick => "nextStep()"}, collection: [
+    <%= f.input :commitment, label: 'Mit wie viel Zeiteinsatz die Woche können Sie helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards step' }, :input_html => { :onclick => "nextStep()"}, collection: [
         ['5-6 Dienste', '5-6'],
         ['3-4 Dienste', '3-4'],
         ['1-2 Dienste', '1-2']]
     %>
 
-    <%= f.input :shift, label: 'Zu welchen Dienstzeiten kannst Du helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards step' }, :input_html => { :onclick => "nextStep()"}, collection: [
+    <%= f.input :shift, label: 'Zu welchen Dienstzeiten können Sie helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards step' }, :input_html => { :onclick => "nextStep()"}, collection: [
         ['Frühdienst', 'FRÜH'],
         ['Spätdienst', 'SPÄT'],
         ['Nachtdienst', 'NACHT'],
         ['Egal', 'EGAL']]
     %>
 
-    <%= f.input :availability, label: 'Für welchen Zeitraum kannst Du helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards step' }, :input_html => { :onclick => "nextStep()"}, collection: [
+    <%= f.input :availability, label: 'Für welchen Zeitraum können Sie helfen?', as: :radio_buttons, wrapper_html: { class: 'radio-cards step' }, :input_html => { :onclick => "nextStep()"}, collection: [
         ['Zunächst unbegrenzt', 'UNBEGRENZT'],
-        ['Zeitlich begrenzt, für ein paar Wochen', 'PAAR_WOCHEN'],
+        ['Zeitlich begrenzt, ein paar Wochen', 'PAAR_WOCHEN'],
         ['Zeitlich begrenzt, für einige Monate', 'EINIGE_MONATE']]
     %>
 
-    <%= f.input :start_date, label: 'Wann kannst du starten?', wrapper_html: { class: 'step' } %>
+    <%= f.input :start_date, label: 'Wann können Sie starten?', wrapper_html: { class: 'step' } %>
 
-    <%= f.input :employment_status, label: 'Was ist Dein aktueller Beschäftigungsstatus?', as: :radio_buttons, wrapper_html: { class: 'radio-cards step' }, :input_html => { :onclick => "nextStep()"}, collection: [
+    <%= f.input :employment_status, label: 'Was ist Ihr aktueller Beschäftigungsstatus?', as: :radio_buttons, wrapper_html: { class: 'radio-cards step' }, :input_html => { :onclick => "nextStep()"}, collection: [
         ['Im Krankenhaus angestellt', 'KRANKENHAUS'],
-        ['In einem pflegerischen / medizinischen Beruf außerhalb des Krankenhauses angestellt', 'PFLEGER'],
-        ['Aktuell nicht in einem Bechäftigungsverhältnis', 'NICHT_BESCHÄFTIGT'],
+        ['Pflegerische / medizinische Anstellung ', 'PFLEGER'],
+        ['Aktuell in keinem Bechäftigungsverhältnis', 'NICHT_BESCHÄFTIGT'],
         ['Außerhalb der Gesundheitsbranche angestellt', 'AUßERHALB'],
         ['Sonstiges', 'SONSTIGES']]
     %>
@@ -73,7 +73,7 @@
     }
 
     function setStep(step) {
-        window.currentStep = step;    
+        window.currentStep = step;
         const stepName = steps[window.currentStep];
         $(".new_helper .step").css('display', 'none');
         $(`.new_helper .helper_${stepName}`).css('display', 'block');
