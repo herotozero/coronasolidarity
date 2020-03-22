@@ -2,7 +2,7 @@
   <div style="width: 50vw; margin: auto 0;">
     <h1>Helfen Sie jetzt!</h1>
     <h5 style="padding-bottom: 1vh;">Leisten Sie medizinische oder pflegerische Hilfe als Antwort auf die Corona Pandemie.</h5>
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center flex-wrap">
       <%= link_to "Als Helfer:in registrieren", new_helper_path, class: 'btn-mint' %>
       <%= link_to "Helfer:innen anfragen", new_hospital_path, class: 'btn-mint' %>
     </div>
@@ -23,7 +23,7 @@
 
 <div class="landing-banner-three">
   <h2 style="padding-bottom: 2vh; text-align: center;">So läuft es ab...</h2>
-  <div class="d-flex align-items-center">
+  <div class="d-flex align-items-center flex-wrap">
     <div class="landing-card d-flex flex-column justify-content-end">
       <div>
        <%= image_tag "helper.png", class:"landing_image" %>
