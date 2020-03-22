@@ -14,9 +14,24 @@
 }
 
 .landing-banner-two {
-  height: 50vh;
-  padding: 2vw;
+  //height: 60vh;
+  padding: 1vw;
   background-color: white;
 }
 
+.landing-banner-three {
+  //height: 60vh;
+  padding: 10vh 2vw;
+  background-color: $light-gray;
+}
 
+.landing-card {
+  height: 40vh;
+  width: 20vw;
+  background-color: $light-mint;
+  margin: 5vw;
+  border-radius: 4px;
+  text-align: center;
+  padding: $md;
+  box-shadow: 4px;
+}
