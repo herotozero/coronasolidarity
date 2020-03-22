@@ -5,7 +5,7 @@ class HelpersController < ApplicationController
 
   def create
     @helper = Helper.new(helpers_params)
-    @helper.title = '-'
+    @helper.title = 'KEIN'
     print @helper.inspect
     if @helper.save
       redirect_to root_path
@@ -27,7 +27,7 @@ class HelpersController < ApplicationController
 
   private
   def helpers_params
-    params.require(:helper).permit(:title, :first_name, :last_name, :email, :phone, :qualification, :specialty, :availability, :city, :commitment, :start_date, :employment_status)
+    params.require(:helper).permit(:title, :first_name, :last_name, :email, :phone, :qualification, :specialty, :availability, :shift, :city, :commitment, :start_date, :employment_status)
   end
 
 end
