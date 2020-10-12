@@ -21,7 +21,7 @@
 
 .landing-banner-three {
   //height: 60vh;
-  padding: 10vh 2vw;
+  padding: 10vh 2vw 5vh 2vw;
   background-color: $light-gray;
 }
 
@@ -48,4 +48,16 @@
 
 .process-match {
   margin-top: 40px;
+}
+
+#youtube-video {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 8vh;
+}
+
+iframe {
+  width: 50vw;
+  height: 28.125vw; /* 100/56.25 = 560/315 = 1.778 */
 }
